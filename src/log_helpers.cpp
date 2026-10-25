@@ -15,7 +15,7 @@ void LogError(wxTextCtrl* ctrl, const char* fmt, Args&&... args) {
 	s.Printf(fmt, std::forward<Args>(args)...);
 	ctrl->SetForegroundColour(*wxRED);
 	ctrl->AppendText(wxString("[ERROR] ") + s);
-	ctrl->SetForegroundColour(*wxBLACK);
+	ctrl->SetForegroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT));
 }
 
 NotificationVisitor::NotificationVisitor(wxTextCtrl* text, unsigned long refreshRate) :

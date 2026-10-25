@@ -465,10 +465,10 @@ void LauncherWizard::SetupCompatibilityWithRepentogonText() {
             compatibleWithRepentogonreason->SetForegroundColour(*wxRED);
         }
     } else {
-        compatibleWithRepentogon->SetForegroundColour(*wxBLACK);
+        compatibleWithRepentogon->SetForegroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT));
         compatibleWithRepentogon->SetLabel("unknown");
         _compatibleWithRepentogon = false;
-        compatibleWithRepentogonreason->SetForegroundColour(*wxBLACK);
+        compatibleWithRepentogonreason->SetForegroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_WINDOWTEXT));
     }
 
 	if (_isaacSetupPage) {
