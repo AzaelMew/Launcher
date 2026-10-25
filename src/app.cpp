@@ -19,6 +19,7 @@
 #include "launcher/windows/repentogon_installer.h"
 #include "launcher/modupdater.h"
 #include "launcher/version.h"
+#include "launcher/wine_dark_mode.h"
 
 static LauncherConfiguration __configuration;
 static Launcher::Installation* __installation;
@@ -114,6 +115,7 @@ bool Launcher::App::OnInit() {
 	SetAppearance(wxSystemSettings::GetAppearance().AreAppsDark() ? Appearance::Dark : Appearance::Light);
 	SetWorkingDirToExe();
 	Logger::Init("launcher.log", "w");
+	WineDarkMode::Enable();
 	Logger::Info("Launcher started, version %s\n", LAUNCHER_VERSION);
 	Logger::Info("Current Directory: %s\n", std::filesystem::current_path().u8string().c_str());
 
@@ -265,6 +267,7 @@ bool Launcher::App::OnInit() {
 }
 
 int Launcher::App::OnExit() {
+	WineDarkMode::Disable();
 	ReleaseLockFile();
 	delete __installation;
 	return 0;
